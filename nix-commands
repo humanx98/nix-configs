@@ -1,0 +1,8 @@
+sudo nixos-rebuild switch --flake .#work-pc-rx6800xt
+sudo nix flake update
+sudo nix-collect-garbage  --delete-old
+
+nix develop
+
+home-manager switch --flake .
+home-manager generations

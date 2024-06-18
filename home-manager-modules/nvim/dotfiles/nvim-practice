@@ -1,0 +1,70 @@
+h,j,k,l - navigation
+x - remove a pointed charachter
+o - new line + insert
+O - new line + insert above the cursor
+i - insert text before the cursor
+I - insert mode in the begging of the line
+a - append text after the cursor
+A - append text in the end of the line
+u - undo changes
+U - udo changes to the line
+r+'x' - replace the letter at the cursor with 'x'
+R - replace more than one character (works as insert in regular IDE)
+Ctrl+r - undo undos
+dd - delete a line and keep it in a register
+dw - delete from cursor to the first letter of the next word
+de - deleter from cursor to the last charachter of the word
+d$ - remove from cursor to the end of the line
+ce - change until the end of the world
+
+p - put the line below the cursor from the register
+P - put the line above the cursor from the register
+
+Motions:
+w - until the start of the next word
+e - to the end of the current word
+$ - to the ed of the line
+0 - to the start of the line
+
+d + repeats + motion (d3w - delete 3 words)
+repeats + d + motion (3dw - do the same as above)
+
+gg - go to the begging og the file
+G - go to the end of the file
+'10'+G - g the line 10
+
+/'name' - search forward for 'name'
+/'name'\c - ignore case
+?'name' - search backward for 'name'
+n - next search result
+N - previous search result
+
+Ctrl+o - take you back to older cursor positions
+Ctrl+i - take you to newer positions
+Ctrl+f - page down
+Ctrl+b - page up
+
+% - navigate between ( ... ), { ... }, [ ... [ ...  ] ... ]
+
+:%s/old/new/gc - replace all 'old' with 'new' in the file
+:s/old/new - replace first 'old' with 'new' in the line
+:10,20s/old/new/gc - replace all 'old' with 'new' beetween line 10 and 20
+   g - apply to all occurrence in the file/line and ask
+   c - ask confirmation
+
+v - start visual selection
+v+d - delete selected text
+
+!ls - execute external shell command
+:!rm test_filt.txt - removes file (an external command)
+
+:r !ls - put the result of the command
+
+y+w - yank (copy) a word
+v+y - yank (copy) selection
+
+Ctrl+w+Ctrl+w - jump between windows
+Ctrl+v+(select lines)+I+(comment line '//')+Esc
+
+:term - open terminal emulator
+:Ex - go to directory explorer 

@@ -1,0 +1,65 @@
+{
+    "cmake.configureOnOpen": false,
+    "cmake.showOptionsMovedNotification": false,
+    "git.suggestSmartCommit": false,
+
+    "workbench.colorTheme": "Kanagawa Black",
+    
+    "C_Cpp.intelliSenseEngine": "disabled",
+
+    "editor.lineNumbers": "relative",
+    "editor.inlayHints.enabled": "off",
+    "editor.renderWhitespace": "all",
+    "editor.fontWeight": "bold",
+
+    "vim.leader": "<Space>",
+    "vim.hlsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        { "before": ["<S-h>"], "commands": [":bprevious"] },
+        { "before": ["<S-l>"], "commands": [":bnext"] },
+
+        { "before": ["leader", "s", "v"], "commands": [":vsplit"] },
+        { "before": ["leader", "s", "h"], "commands": [":split"] },
+
+        {
+          "before": ["<C-h>"],
+          "commands": ["workbench.action.focusLeftGroup"]
+        },
+        {
+          "before": ["<C-j>"],
+          "commands": ["workbench.action.focusBelowGroup"]
+        },
+        {
+          "before": ["<C-k>"],
+          "commands": ["workbench.action.focusAboveGroup"]
+        },
+        {
+          "before": ["<C-l>"],
+          "commands": ["workbench.action.focusRightGroup"]
+        },
+        {
+            "before": ["<leader>", "c", "a"],
+            "commands": ["editor.action.quickFix"]
+        },
+        { 
+            "before": ["leader", "f"], 
+            "commands": ["workbench.action.quickOpen"]
+        },
+        { 
+            "before": ["leader", "p"],
+            "commands": ["editor.action.formatDocument"]
+        },
+        {
+          "before": ["g", "h"],
+          "commands": ["editor.action.showDefinitionPreviewHover"]
+        }
+    ],
+    "vim.visualModeKeyBindings": [
+        { "before": ["<"], "commands": ["editor.action.outdentLines"] },
+        { "before": [">"], "commands": ["editor.action.indentLines"] },
+        { "before": ["J"], "commands": ["editor.action.moveLinesDownAction"] },
+        { "before": ["K"], "commands": ["editor.action.moveLinesUpAction"] },
+        { "before": ["leader", "c"], "commands": ["editor.action.commentLine"] }
+    ]
+}
