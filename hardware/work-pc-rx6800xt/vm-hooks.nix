@@ -4,7 +4,6 @@
   # https://github.com/GitBanan/PersonalNixConfig/blob/b65b6af6146f89a5d76d8148acf8166158ced9c0/hosts/common/optional/passthrough.nix
   virtualisation.libvirtd.hooks.qemu =
     let
-
       pci_gpu_video = "pci_0000_2d_00_0";
       pci_gpu_audio = "pci_0000_2d_00_1";
 
@@ -72,13 +71,13 @@
       '';
     in
     {
-      "ubuntu24" = pkgs.writeShellScript "ubuntu24.sh" ''
+      "gpu-pass" = pkgs.writeShellScript "gpu-pass.sh" ''
         GUEST_NAME=''$1
         OP=''$2
         SUB_OP=''$3
         # echo "''$1_''$2_''$3" > /home/${user-info.name}/''$1_''$2_''$3
 
-      if [ ''$GUEST_NAME = "ubuntu24" ]; then
+        if [[ ''$GUEST_NAME =~ "gpu-pass" ]]; then
           if [ ''$OP = "prepare" ] && [ ''$SUB_OP = "begin" ]; then
             # echo "prepare-begin-hook" > /home/${user-info.name}/prepare-begin-hook
             ${prepare-begin-hook}

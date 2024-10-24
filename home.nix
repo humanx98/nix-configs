@@ -52,6 +52,7 @@
     google-chrome
     telegram-desktop
     zed-editor
+    nixfmt-rfc-style
   ];
 
   home.sessionVariables = {
