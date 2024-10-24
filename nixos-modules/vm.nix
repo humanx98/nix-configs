@@ -35,11 +35,19 @@ in
 
   # https://kilo.bytesize.xyz/gpu-passthrough-on-nixos
   # https://github.com/materusPL/nixos-config/blob/8327d4cfd30e77cf6a072dcb09e4eac5332554ab/configurations/host/materusPC/hardware/boot.nix
-  # boot = {
-  #   kernelModules = [ "amdgpu" "kvm-amd" "vfio_pci" "vfio_iommu_type1" "vfio" ];
-  #   kernelParams = [ "amd_iommu=on" "iommu=pt" "kvm.ignore_msrs=1" ];
-  # };
-
+  boot = {
+    kernelModules = [
+      "kvm-${user-info.platform}"
+      "vfio_pci"
+      "vfio_iommu_type1"
+      "vfio"
+    ];
+    kernelParams = [
+      "${user-info.platform}_iommu=on"
+      "iommu=pt"
+      "kvm.ignore_msrs=1"
+    ];
+  };
   # Manage the virtualisation services
   virtualisation = {
     libvirtd = {
@@ -59,5 +67,4 @@ in
   imports = [ vm-hooks-module ];
 
   services.spice-vdagentd.enable = true;
-
 }

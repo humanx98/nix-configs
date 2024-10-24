@@ -21,6 +21,7 @@
       user-info = {
         name = "human";
         description = "Bohdan";
+        platform = "amd";
         git = {
           name = "Bohdan Semenov";
           email = "bodyasemzen@gmail.com";

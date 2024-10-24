@@ -19,7 +19,7 @@
         sleep 5
 
         # Start default network
-        virsh net-start default
+        # virsh net-start default
 
         # Unbind EFI Framebuffer
         echo efi-framebuffer.0 > /sys/bus/platform/drivers/efi-framebuffer/unbind
@@ -44,7 +44,7 @@
 
       release-end-hook = ''
         # Stop default network
-        virsh net-destroy default
+        # virsh net-destroy default
 
         # Unload VFIO kernel modules
         modprobe -r vfio_pci
@@ -78,22 +78,36 @@
     in
     {
       "gpu-pass" = pkgs.writeShellScript "gpu-pass.sh" ''
+
+        log() {
+          GUEST_NAME=''$1
+          LOG_FILE=''$2
+          MESSAGE=''$3
+          if [[ ''$GUEST_NAME =~ "logging" ]]; then
+              LOG_FILE_PATH=''$(dirname ''$LOG_FILE)
+              mkdir -p ''$LOG_FILE_PATH
+              echo ''$MESSAGE >> ''$LOG_FILE
+          fi
+        }
+
         GUEST_NAME=''$1
         OP=''$2
         SUB_OP=''$3
-        # echo "''$1_''$2_''$3" > /home/${user-info.name}/''$1_''$2_''$3
+        LOG_FILE="/home/${user-info.name}/my-space/vm-logs/''$GUEST_NAME"
+
+        log ''$GUEST_NAME ''$LOG_FILE "''$OP-''$SUB_OP"
 
         if [[ ''$GUEST_NAME =~ "gpu-pass" ]]; then
           if [ ''$OP = "prepare" ] && [ ''$SUB_OP = "begin" ]; then
-            # echo "prepare-begin-hook" > /home/${user-info.name}/prepare-begin-hook
+            log ''$GUEST_NAME ''$LOG_FILE " - gpu-path-prepare-begin-hook"
             ${prepare-begin-hook}
-            # echo "prepare-begin-hook-finished" > /home/${user-info.name}/prepare-begin-hook-finished
+            log ''$GUEST_NAME ''$LOG_FILE " - gpu-path-prepare-begin-hook-finished"
           fi
 
           if [ ''$OP = "release" ] && [ ''$SUB_OP = "end" ]; then
-            # echo "release-end-hook" > /home/${user-info.name}/release-end-hook
+            log ''$GUEST_NAME ''$LOG_FILE " - gpu-path-release-end-hook"
             ${release-end-hook}
-            # echo "release-end-hook-finished" > /home/${user-info.name}/release-end-hook-finished
+            log ''$GUEST_NAME ''$LOG_FILE " - gpu-path-release-end-hook-finished"
           fi
         fi
       '';
