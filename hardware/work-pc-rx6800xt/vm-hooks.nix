@@ -18,6 +18,9 @@
 
         sleep 5
 
+        # Start default network
+        virsh net-start default
+
         # Unbind EFI Framebuffer
         echo efi-framebuffer.0 > /sys/bus/platform/drivers/efi-framebuffer/unbind
 
@@ -40,6 +43,9 @@
       '';
 
       release-end-hook = ''
+        # Stop default network
+        virsh net-destroy default
+
         # Unload VFIO kernel modules
         modprobe -r vfio_pci
         modprobe -r vfio_iommu_type1
