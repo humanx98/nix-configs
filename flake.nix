@@ -13,7 +13,8 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ... }: 
+  outputs =
+    inputs@{ nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -25,11 +26,12 @@
           email = "bodyasemzen@gmail.com";
         };
       };
-    in {
+    in
+    {
       nixosConfigurations = {
 
         work-pc-rx6800xt = nixpkgs.lib.nixosSystem {
-          specialArgs = { 
+          specialArgs = {
             hardware-module = ./hardware/work-pc-rx6800xt;
             vm-hooks-module = ./hardware/work-pc-rx6800xt/vm-hooks.nix;
             inherit user-info;
@@ -51,7 +53,7 @@
         };
 
         asus-rog-strix-ae = nixpkgs.lib.nixosSystem {
-          specialArgs = { 
+          specialArgs = {
             hardware-module = ./hardware/asus-rog-strix-ae;
             vm-hooks-module = ./hardware/asus-rog-strix-ae/vm-hooks.nix;
             inherit user-info;

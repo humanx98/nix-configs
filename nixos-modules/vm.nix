@@ -1,12 +1,19 @@
-{ config, pkgs, user-info, vm-hooks-module, ... }:
+{
+  config,
+  pkgs,
+  user-info,
+  vm-hooks-module,
+  ...
+}:
 
-let 
+let
   start-virsh = pkgs.writeShellScriptBin "start-virsh" ''
     sudo virsh net-list --all
     sudo virsh net-autostart default
     sudo virsh net-start default
   '';
-in {
+in
+{
 
   # Enable dconf (System Management Tool)
   programs.dconf.enable = true;

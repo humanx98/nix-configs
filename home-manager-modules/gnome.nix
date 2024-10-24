@@ -1,4 +1,9 @@
-{ config, pkgs, user-info, ... }:
+{
+  config,
+  pkgs,
+  user-info,
+  ...
+}:
 {
   home.packages = with pkgs.gnomeExtensions; [
     dash-to-dock

@@ -1,4 +1,4 @@
-{ config, pkgs, ...}:
+{ config, pkgs, ... }:
 {
   programs.neovim = {
     enable = true;
@@ -43,16 +43,18 @@
         config = ''require("plugins.telescope")'';
       }
       {
-        plugin = (nvim-treesitter.withPlugins (p: [
-          p.tree-sitter-c
-          p.tree-sitter-cpp
-          p.tree-sitter-cmake
-          p.tree-sitter-lua
-          p.tree-sitter-nix
-          p.tree-sitter-javascript
-          p.tree-sitter-html
-          p.tree-sitter-python
-        ]));
+        plugin = (
+          nvim-treesitter.withPlugins (p: [
+            p.tree-sitter-c
+            p.tree-sitter-cpp
+            p.tree-sitter-cmake
+            p.tree-sitter-lua
+            p.tree-sitter-nix
+            p.tree-sitter-javascript
+            p.tree-sitter-html
+            p.tree-sitter-python
+          ])
+        );
         type = "lua";
         config = ''
           require("nvim-treesitter.configs").setup({
@@ -71,7 +73,7 @@
       {
         plugin = nvim-lspconfig;
         type = "lua";
-        config = ''require("plugins.lsp")''; 
+        config = ''require("plugins.lsp")'';
       }
       {
         plugin = neodev-nvim;

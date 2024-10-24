@@ -1,4 +1,10 @@
-{ config, pkgs, inputs, user-info, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  user-info,
+  ...
+}:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -14,7 +20,7 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "24.05"; # Please read the comment before changing.
-	
+
   nixpkgs.config.allowUnfree = true;
 
   # Let Home Manager install and manage itself.

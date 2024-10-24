@@ -2,14 +2,19 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, user-info, hardware-module, ... }:
+{
+  config,
+  pkgs,
+  user-info,
+  hardware-module,
+  ...
+}:
 
 {
-  imports =
-    [
-      hardware-module
-      ./nixos-modules/vm.nix
-    ];
+  imports = [
+    hardware-module
+    ./nixos-modules/vm.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -17,8 +22,11 @@
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -86,9 +94,12 @@
   users.users.${user-info.name} = {
     isNormalUser = true;
     description = user-info.description;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -109,27 +120,30 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
   ];
 
-  environment.gnome.excludePackages = (with pkgs; [
-    gnome-tour
-    gnome-connections
-    cheese # webcam tool
-    baobab # disk usage analyzer
-    epiphany # web browser
-    simple-scan # document scanner
-    totem # video player
-    yelp # help viewer
-    evince # document viewer
-    geary # email client
-    gnome-contacts
-    gnome-logs
-    gnome-maps
-    gnome-music
-    gnome-characters
-  ]);
+  environment.gnome.excludePackages = (
+    with pkgs;
+    [
+      gnome-tour
+      gnome-connections
+      cheese # webcam tool
+      baobab # disk usage analyzer
+      epiphany # web browser
+      simple-scan # document scanner
+      totem # video player
+      yelp # help viewer
+      evince # document viewer
+      geary # email client
+      gnome-contacts
+      gnome-logs
+      gnome-maps
+      gnome-music
+      gnome-characters
+    ]
+  );
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
