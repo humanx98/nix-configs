@@ -4,8 +4,10 @@
   # https://github.com/GitBanan/PersonalNixConfig/blob/b65b6af6146f89a5d76d8148acf8166158ced9c0/hosts/common/optional/passthrough.nix
   virtualisation.libvirtd.hooks.qemu =
     let
-      pci_gpu_video = "pci_0000_2d_00_0";
-      pci_gpu_audio = "pci_0000_2d_00_1";
+      # pci_gpu_video = "pci_0000_2d_00_0";
+      # pci_gpu_audio = "pci_0000_2d_00_1";
+      pci_gpu_video = "0000:2d:00.0";
+      pci_gpu_audio = "0000:2d:00.1";
 
       prepare-begin-hook = ''
         # Unbind VTconsoles
@@ -31,8 +33,8 @@
         modprobe -r drm
 
         # Detach GPU from host
-        virsh nodedev-detach ${pci_gpu_video}
-        virsh nodedev-detach ${pci_gpu_audio}
+        # virsh nodedev-detach ${pci_gpu_video}
+        # virsh nodedev-detach ${pci_gpu_audio}
 
         sleep 5
 
@@ -40,6 +42,18 @@
         modprobe vfio
         modprobe vfio_pci
         modprobe vfio_iommu_type1
+
+        # UNBIND DEVICES
+        echo ${pci_gpu_video} > /sys/bus/pci/devices/${pci_gpu_video}/driver/unbind
+        echo ${pci_gpu_audio} > /sys/bus/pci/devices/${pci_gpu_audio}/driver/unbind
+
+        # OVERRIDE DRIVER WITH VFIO
+        echo "vfio-pci" > /sys/bus/pci/devices/${pci_gpu_video}/driver_override
+        echo "vfio-pci" > /sys/bus/pci/devices/${pci_gpu_audio}/driver_override
+
+        # BIND DEVICES TO VFIO
+        echo ${pci_gpu_video} > /sys/bus/pci/drivers/vfio-pci/bind
+        echo ${pci_gpu_audio} > /sys/bus/pci/drivers/vfio-pci/bind
       '';
 
       release-end-hook = ''
@@ -52,8 +66,20 @@
         modprobe -r vfi
 
         # Reattach GPU TO host
-        virsh nodedev-reattach ${pci_gpu_video}
-        virsh nodedev-reattach ${pci_gpu_audio}
+        # virsh nodedev-reattach ${pci_gpu_video}
+        # virsh nodedev-reattach ${pci_gpu_audio}
+
+        # UNBIND VFIO
+        echo ${pci_gpu_video} > /sys/bus/pci/drivers/vfio-pci/unbind
+        echo ${pci_gpu_audio} > /sys/bus/pci/drivers/vfio-pci/unbind
+
+        # RESET DRIVER OVERRIDE
+        echo > /sys/bus/pci/devices/${pci_gpu_video}/driver_override
+        echo > /sys/bus/pci/devices/${pci_gpu_audio}/driver_override
+
+        # BIND DEVICES TO ORIGINAL DRIVERS
+        echo ${pci_gpu_video} > /sys/bus/pci/drivers/amdgpu/bind
+        echo ${pci_gpu_audio} > /sys/bus/pci/drivers/snd_hda_intel/bind
 
         sleep 5
 

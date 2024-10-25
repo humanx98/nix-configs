@@ -38,14 +38,12 @@ in
   boot = {
     kernelModules = [
       "kvm-${user-info.platform}"
-      "vfio_pci"
-      "vfio_iommu_type1"
-      "vfio"
     ];
     kernelParams = [
       "${user-info.platform}_iommu=on"
       "iommu=pt"
       "kvm.ignore_msrs=1"
+      "video=efifb:off"
     ];
   };
   # Manage the virtualisation services
@@ -66,5 +64,6 @@ in
   };
   imports = [ vm-hooks-module ];
 
+  networking.firewall.allowedTCPPorts = [ 5900 ];
   services.spice-vdagentd.enable = true;
 }
