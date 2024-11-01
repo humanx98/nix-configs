@@ -3,7 +3,7 @@
     "cmake.showOptionsMovedNotification": false,
     "git.suggestSmartCommit": false,
 
-    "workbench.colorTheme": "Kanagawa Black",
+    "workbench.colorTheme": "Default High Contrast",
     
     "C_Cpp.intelliSenseEngine": "disabled",
 

@@ -24,7 +24,7 @@
         vscodevim.vim
         jnoortheen.nix-ide
         llvm-vs-code-extensions.vscode-clangd
-        twxs.cmake
+        ms-vscode.cmake-tools
         ms-vscode.cpptools
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
