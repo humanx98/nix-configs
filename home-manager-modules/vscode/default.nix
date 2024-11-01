@@ -2,8 +2,9 @@
 {
   # ------------------------------------------------------
   # import base64
+  # # sha256-LNtXYZ65Lka1lpxeKozK6LB0yaxAjHsfVsCJ8ILX8io=
   # # The 'sha256-' in the beginning should be removed
-  # text = b"YDw3tbOSg3k/Sff/GPheb0rK84cPq3Bs3eIJDEBj2j0="
+  # text = b"LNtXYZ65Lka1lpxeKozK6LB0yaxAjHsfVsCJ8ILX8io="
   # print(base64.decodebytes(text).hex())
   # ------------------------------------------------------
   programs.vscode = {
@@ -24,27 +25,21 @@
         vscodevim.vim
         jnoortheen.nix-ide
         llvm-vs-code-extensions.vscode-clangd
-        ms-vscode.cmake-tools
         ms-vscode.cpptools
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
-          name = "kanagawa-vscode-color-theme";
-          publisher = "metaphore";
-          version = "0.4.0";
-          sha256 = "076e6c68c91a4f1ef7ba770fb404052907c7d63e5531b0faee58093c9726def9";
+          name = "cmake-language-support-vscode";
+          publisher = "josetr";
+          version = "0.0.9";
+          sha256 = "2cdb57619eb92e46b5969c5e2a8ccae8b074c9ac408c7b1f56c089f082d7f22a";
+          
         }
         {
           name = "shader";
           publisher = "slevesque";
           version = "1.1.5";
           sha256 = "3dfdfb15e40c365bfbe1fecb333f7e08ab1c17a5234d9ed9a5c69914ab57d993";
-        }
-        {
-          name = "kanagawa-black";
-          publisher = "lamarcke";
-          version = "1.0.5";
-          sha256 = "603c37b5b39283793f49f7ff18f85e6f4acaf3870fab706cdde2090c4063da3d";
         }
       ];
   };

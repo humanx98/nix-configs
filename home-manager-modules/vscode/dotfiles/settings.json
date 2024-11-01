@@ -3,8 +3,6 @@
     "cmake.showOptionsMovedNotification": false,
     "git.suggestSmartCommit": false,
 
-    "workbench.colorTheme": "Default High Contrast",
-    
     "C_Cpp.intelliSenseEngine": "disabled",
 
     "editor.lineNumbers": "relative",
