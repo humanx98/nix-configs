@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1729848063,
-        "narHash": "sha256-1uGIPOSJq4IzoDvgfOF6A3sw5it1WX3ZdYl2+jCkjv8=",
+        "lastModified": 1736508663,
+        "narHash": "sha256-ZOaGwa+WnB7Zn3YXimqjmIugAnHePdXCmNu+AHkq808=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "c77c3bb23390a9ba91860e721edde54856fc5f7a",
+        "rev": "2532b500c3ed2b8940e831039dcec5a5ea093afc",
         "type": "github"
       },
       "original": {
@@ -22,11 +22,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1729665710,
-        "narHash": "sha256-AlcmCXJZPIlO5dmFzV3V2XF6x/OpNWUV8Y/FMPGd8Z4=",
+        "lastModified": 1736344531,
+        "narHash": "sha256-8YVQ9ZbSfuUk2bUf2KRj60NRraLPKPS0Q4QFTbc+c2c=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "2768c7d042a37de65bb1b5b3268fc987e534c49d",
+        "rev": "bffc22eb12172e6db3c5dde9e3e5628f8e3e7912",
         "type": "github"
       },
       "original": {
@@ -39,11 +39,11 @@
     "plugin-mellifluous": {
       "flake": false,
       "locked": {
-        "lastModified": 1728829834,
-        "narHash": "sha256-UHSFS9Unvfi6xEUXscVs53Cx8XztIij4v/7HyIS3twY=",
+        "lastModified": 1735491058,
+        "narHash": "sha256-K/4ohlDqghxWcJENMhlSVECR1+d1BsFSUOVkbzk98Qw=",
         "owner": "ramojus",
         "repo": "mellifluous.nvim",
-        "rev": "1cce83a6df143889c3e17705e2cf7bbe7b10d70f",
+        "rev": "ecd3bffaec58ef79d27cfa36ac351ab7fc222df8",
         "type": "github"
       },
       "original": {
