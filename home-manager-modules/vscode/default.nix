@@ -2,9 +2,8 @@
 {
   # ------------------------------------------------------
   # import base64
-  # # sha256-LNtXYZ65Lka1lpxeKozK6LB0yaxAjHsfVsCJ8ILX8io=
-  # # The 'sha256-' in the beginning should be removed
-  # text = b"LNtXYZ65Lka1lpxeKozK6LB0yaxAjHsfVsCJ8ILX8io="
+  # text = b"sha256-nEdYS9/cMS4dcbFje23a47QBZr9eDK3dvtkFWqA+OHU="
+  # text = text.replace(b"sha256-", b"")
   # print(base64.decodebytes(text).hex())
   # ------------------------------------------------------
   programs.vscode = {
@@ -40,6 +39,18 @@
           publisher = "slevesque";
           version = "1.1.5";
           sha256 = "3dfdfb15e40c365bfbe1fecb333f7e08ab1c17a5234d9ed9a5c69914ab57d993";
+        }
+        {
+          name = "git-graph";
+          publisher = "mhutchie";
+          version = "1.30.0";
+          sha256 = "b0779a30caf9866434900159c71322464e9fd267e3920d9732703819ff831f00";
+        }
+        {
+          name = "githistory";
+          publisher = "donjayamanne";
+          version = "0.6.20";
+          sha256 = "9c47584bdfdc312e1d71b1637b6ddae3b40166bf5e0cadddbed9055aa03e3875";
         }
       ];
   };
