@@ -34,7 +34,7 @@
         work-pc-rx6800xt = nixpkgs.lib.nixosSystem {
           specialArgs = {
             hardware-module = ./hardware/work-pc-rx6800xt;
-            vm-hooks-module = ./hardware/work-pc-rx6800xt/vm-hooks.nix;
+            # vm-hooks-module = ./hardware/work-pc-rx6800xt/vm-hooks.nix;
             inherit user-info;
             # inherit inputs;
           };
@@ -56,7 +56,7 @@
         asus-rog-strix-ae = nixpkgs.lib.nixosSystem {
           specialArgs = {
             hardware-module = ./hardware/asus-rog-strix-ae;
-            vm-hooks-module = ./hardware/asus-rog-strix-ae/vm-hooks.nix;
+            # vm-hooks-module = ./hardware/asus-rog-strix-ae/vm-hooks.nix;
             inherit user-info;
             # inherit inputs;
           };

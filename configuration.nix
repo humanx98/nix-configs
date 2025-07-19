@@ -13,7 +13,7 @@
 {
   imports = [
     hardware-module
-    ./nixos-modules/vm.nix
+    # ./nixos-modules/vm.nix
   ];
 
   # Bootloader.
@@ -53,15 +53,13 @@
     LC_TIME = "uk_UA.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
+    enable = true;
     xkb = {
       layout = "us";
       variant = "";
@@ -170,6 +168,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 
 }

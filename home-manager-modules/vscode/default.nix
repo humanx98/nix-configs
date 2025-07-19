@@ -14,10 +14,10 @@
         gdb
       ]
     );
-    userSettings = builtins.fromJSON (builtins.readFile ./dotfiles/settings.json);
-    keybindings = builtins.fromJSON (builtins.readFile ./dotfiles/keybindings.json);
     mutableExtensionsDir = false;
-    extensions =
+    profiles.default.userSettings = builtins.fromJSON (builtins.readFile ./dotfiles/settings.json);
+    profiles.default.keybindings = builtins.fromJSON (builtins.readFile ./dotfiles/keybindings.json);
+    profiles.default.extensions =
       with pkgs.vscode-extensions;
       [
         ms-python.python
@@ -33,6 +33,13 @@
           version = "0.0.9";
           sha256 = "2cdb57619eb92e46b5969c5e2a8ccae8b074c9ac408c7b1f56c089f082d7f22a";
           
+        }
+        {
+          # cmake-language-support-vscode depends on this package
+          name = "vscode-dotnet-runtime";
+          publisher = "ms-dotnettools";
+          version = "2.2.3";
+          sha256 = "3fdc1189d54949fda67dd4b77b5eb6179b92c70dd9b6554ce70233838710897d";
         }
         {
           name = "shader";
