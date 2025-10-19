@@ -1,5 +1,3 @@
-local lspconfig = require("lspconfig")
-
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspConfig", {}),
     callback = function(ev)
@@ -52,10 +50,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- used to enable autocompletion (assign to every lsp server config)
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
-lspconfig.lua_ls.setup ({
+vim.lsp.config("lua_ls", {
     capabilities = capabilities,
 })
+vim.lsp.enable({ "lua_ls" })
 
-lspconfig.clangd.setup ({
+vim.lsp.config("clangd", {
     capabilities = capabilities,
 })
+vim.lsp.enable({ "clangd" })
