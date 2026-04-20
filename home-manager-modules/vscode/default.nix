@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  pkgs-unstable,
+  ...
+}:
 {
   # ------------------------------------------------------
   # import base64
@@ -8,7 +13,7 @@
   # ------------------------------------------------------
   programs.vscode = {
     enable = true;
-    package = pkgs.vscode.fhsWithPackages (
+    package = pkgs-unstable.vscode.fhsWithPackages (
       ps: with ps; [
         clang-tools
         gdb
@@ -18,7 +23,7 @@
     profiles.default.userSettings = builtins.fromJSON (builtins.readFile ./dotfiles/settings.json);
     profiles.default.keybindings = builtins.fromJSON (builtins.readFile ./dotfiles/keybindings.json);
     profiles.default.extensions =
-      with pkgs.vscode-extensions;
+      with pkgs-unstable.vscode-extensions;
       [
         ms-python.python
         vscodevim.vim
@@ -26,13 +31,12 @@
         llvm-vs-code-extensions.vscode-clangd
         ms-vscode.cpptools
       ]
-      ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+      ++ pkgs-unstable.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "cmake-language-support-vscode";
           publisher = "josetr";
           version = "0.0.9";
           sha256 = "2cdb57619eb92e46b5969c5e2a8ccae8b074c9ac408c7b1f56c089f082d7f22a";
-          
         }
         {
           # cmake-language-support-vscode depends on this package

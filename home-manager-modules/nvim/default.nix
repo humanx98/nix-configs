@@ -78,7 +78,7 @@
       {
         plugin = neodev-nvim;
         type = "lua";
-        config = ''require('neodev').setup()'';
+        config = "require('neodev').setup()";
       }
     ];
   };

@@ -1,5 +1,5 @@
-sudo nixos-rebuild switch --flake .#work-pc-rx6800xt
 sudo nixos-rebuild switch --flake .#asus-rog-strix-ae
+sudo nixos-rebuild switch --flake .#work-pc-rx6800xt
 sudo nix flake update
 sudo nix-collect-garbage  --delete-old
 
