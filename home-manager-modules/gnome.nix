@@ -30,8 +30,8 @@
       "org/gnome/desktop/background" = {
         color-shading-type = "solid";
         picture-options = "zoom";
-        picture-uri = "file://${./wallpapers/pr6tlrhvsefd1.jpeg}";
-        picture-uri-dark = "file://${./wallpapers/pr6tlrhvsefd1.jpeg}";
+        picture-uri = "file://${./wallpapers/flower.png}";
+        picture-uri-dark = "file://${./wallpapers/flower.png}";
       };
       "org/gnome/shell/extensions/dash-to-dock" = {
         always-center-icons = false;
