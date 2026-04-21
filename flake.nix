@@ -24,6 +24,10 @@
     let
       hostSystem = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${hostSystem};
+      pkgs-unstable = import nixpkgs-unstable {
+        system = hostSystem;
+        config.allowUnfree = true;
+      };
       user-info = {
         name = "human";
         description = "Bohdan";
@@ -70,6 +74,7 @@
               hostName = "asus-rog-strix-ae";
             };
             inherit user-info;
+            inherit pkgs-unstable;
             # inherit inputs;
           };
           modules = [
@@ -80,10 +85,7 @@
               home-manager.extraSpecialArgs = {
                 inherit inputs;
                 inherit user-info;
-                pkgs-unstable = import inputs.nixpkgs-unstable {
-                  system = hostSystem;
-                  config.allowUnfree = true;
-                };
+                inherit pkgs-unstable;
               };
               home-manager.useUserPackages = true;
               home-manager.users.${user-info.name} = import ./home.nix;
