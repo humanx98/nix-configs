@@ -8,3 +8,9 @@ nix develop
 
 home-manager switch --flake .
 home-manager generations
+
+HIP_VISIBLE_DEVICES=0 ROCR_VISIBLE_DEVICES=0 llama-server -m /path/to/model.gguf -ngl 999 -c 8192 --host 127.0.0.1 --port 8080
+HIP_VISIBLE_DEVICES=0 ROCR_VISIBLE_DEVICES=0 llama-cli -m ~/my-space/ai-models/qwen2.5-coder-3b-instruct-fp16.gguf -ngl 999 -c 8192 -p "Hello"
+
+HIP_VISIBLE_DEVICES=0 ROCR_VISIBLE_DEVICES=0 ollama serve
+codex --oss --local-provider ollama -m gemma4:26b-a4b-it-q4_K_M --full-auto --cd /home/human/my_space/code/hipdemo-cpp

@@ -22,6 +22,7 @@
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 5;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = host-info.hostName;
@@ -118,9 +119,12 @@
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
+    pkgs-unstable.python3Packages.huggingface-hub
+    pkgs-unstable.llama-cpp-rocm
     pkgs-unstable.ollama-rocm
     pciutils
     rocmPackages.rocminfo
+    rocmPackages.rocm-smi
   ];
 
   environment.gnome.excludePackages = (
